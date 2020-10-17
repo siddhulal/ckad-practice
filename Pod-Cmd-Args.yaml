@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debian-pod
+  labels:
+     type: backend
+spec:
+  containers:
+    - name: debian
+      image: debian
+      env:
+        - name: MESSAGE
+          value: "Kubernetes is awesome"
+      command: ["/bin/echo"]
+      args: [$(MESSAGE)]
