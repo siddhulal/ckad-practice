@@ -1,0 +1,20 @@
+apiVersion:apps/v1
+kind: ReplicationSet
+metadata:
+  name: nginx-replication-controller
+  labels:
+    type: backend
+spec:
+  template:
+     metadata:
+       name: nginx-pod
+       labels:
+         type: backend
+     spec:
+       contianers:
+         - name: nginx
+           image: nginx
+  replicas: 3
+  selector:
+    matchLabels:
+      type: backend
