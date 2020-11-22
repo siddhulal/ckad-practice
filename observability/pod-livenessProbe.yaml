@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    type: backend
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      ports:
+        - containerPort:: 80
+      livenessProbe:
+        httpGet:
+          path: /
+          port: 80
+        initialDelaySeconds: 5
+        periodSeconds: 5
